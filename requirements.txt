@@ -1,0 +1,7 @@
+uvicorn
+pydantic
+fastapi
+firebase_admin
+time
+pycoingecko
+psycopg2
