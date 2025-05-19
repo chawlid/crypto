@@ -2,6 +2,5 @@ uvicorn
 pydantic
 fastapi
 firebase_admin
-time
 pycoingecko
-psycopg2
+psycopg2-binary
