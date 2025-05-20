@@ -14,8 +14,8 @@ class Item(BaseModel):
 @app.post("/token/")
 async def create_token(item: Item):
     print("Token created")
-   # print(item.token)
-   # print(item.time)
+    print(item.token)
+    print(item.time)
     sp.send_data(item.token, item.time)
     return {"token":  item}
 

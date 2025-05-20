@@ -3,4 +3,4 @@ pydantic
 fastapi
 firebase_admin
 pycoingecko
-psycopg2-binary
+time
