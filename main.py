@@ -24,5 +24,11 @@ async def root():
    print("API is connected")
    return {"message": "API is connected"}
 
+@app.get("/send/")
+async def send():
+    print("Send push notification")
+    
+    return {"message": "Push notification sent"}
+
 
 
