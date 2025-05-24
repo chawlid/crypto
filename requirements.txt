@@ -1,6 +1,0 @@
-uvicorn==0.34.0
-pydantic==1.9.0
-fastapi==0.74.0
-requests==2.27.0
-firebase_admin==3.7.0
-pycoingecko==2.5.0

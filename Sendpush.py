@@ -34,9 +34,7 @@ def send_data(token, timeLoop):
       break
    data=cg.get_price(ids=row[1], vs_currencies ="usd", include_24hr_change=True)
    print(data)
-   #name= "Ripple"
-   #price = data.get("ripple").get("usd")
-   #percentage= data.get("ripple").get("usd_24h_change")
+
    coins=row[1].split(",")
    for coin in coins:
      
@@ -49,7 +47,7 @@ def send_data(token, timeLoop):
      print(percentage)
      fcm.sendPush(name,price,percentage, token)
   
- # send_notification("Cardano", data.get("cardano").get("usd"), data.get("cardano").get("usd_24h_change"))
+
     
    time.sleep(60)
 
