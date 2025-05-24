@@ -45,7 +45,8 @@ def send_data(token, timeLoop):
      print("Coin: ", coin)
      print(price)
      print(percentage)
-     fcm.sendPush(name,price,percentage, token)
+     print("----------------------------------------")
+     fcm.sendPush(name,price,percentage,token)
   
 
     

@@ -1,7 +1,7 @@
 import uvicorn
 import Sendpush as sp
 
-from fastapi import FastAPI, __version__
+from fastapi import FastAPI
 from pydantic import BaseModel
 
 app = FastAPI()
@@ -16,7 +16,7 @@ async def create_token(item: Item):
     print("Token created")
     print(item.token)
     print(item.time)
-    #sp.send_data(item.token, item.time)
+    sp.send_data(item.token, item.time)
     return {"token":  item}
 
 @app.get("/")
@@ -27,6 +27,6 @@ async def root():
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", port=8000, log_level="info")
+    uvicorn.run("main:app", host="192.168.1.48", port=8000, reload=True)
 #ngrok config add-authtoken 2r8bFq6GpUfmyrs3PIu13bCYU8e_2oQHWK2hWMYP22TazUnax
 #ngrok http http://127.0.0.1:8000
