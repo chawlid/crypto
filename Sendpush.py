@@ -4,10 +4,6 @@ from pycoingecko import CoinGeckoAPI
 import psycopg2
 
 
-
-
-
-
 conn = psycopg2.connect(database="defaultdb",
                         host="pg-b7b4af8-notification-a9fb.b.aivencloud.com",
                         user="avnadmin",
@@ -15,16 +11,14 @@ conn = psycopg2.connect(database="defaultdb",
                         port="28691")
 cg = CoinGeckoAPI()
 
-
-
 def get_tokens(token):
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM public.cryptos WHERE token = %s", (token,))
     row = cursor.fetchone()
-    
+    cursor.close()
     return row
 
-def send_data(token, timeLoop):
+def send_data(token):
 
  while True:
    row= get_tokens(token)
@@ -42,6 +36,7 @@ def send_data(token, timeLoop):
      name=coin
      price = data.get(coin).get("usd")
      percentage= data.get(coin).get("usd_24h_change")
+     percentage=round(percentage, 2)
      print("Coin: ", coin)
      print(price)
      print(percentage)
@@ -51,5 +46,4 @@ def send_data(token, timeLoop):
 
     
    time.sleep(60)
-
 
