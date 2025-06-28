@@ -3,43 +3,38 @@ import Sendpush as sp
 
 from fastapi import FastAPI, BackgroundTasks
 from pydantic import BaseModel
-from fastapi.middleware.cors import CORSMiddleware
+
 from fastapi.concurrency import run_in_threadpool
 
 app = FastAPI()
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # Adjust for production
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 
 
 class Item(BaseModel):
    token: str
+   time: int 
 
 
-"""@app.post("/send")
+@app.post("/send")
 async def create_token(item: Item):
     
-    print(item.token)
-    print("-------------------------------------------------------------------")
-    sp.send_data(item.token)
-    return {"token":  item}"""
+    userToken = item.token
+    usertime = item.time 
+    await run_in_threadpool(sp.send_data, userToken, usertime)
+    return {"token":  item}
 
 @app.get("/")
 async def root():
    print("API is connected")
    return {"message": "API is "}
 
+""""
 @app.get("/token/")
 async def send_token( token: str):
    
    await run_in_threadpool(sp.send_data, token)
    return {"message": "token received"}
-
+"""
 
 
 if __name__ == "__main__":
