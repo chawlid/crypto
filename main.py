@@ -49,8 +49,8 @@ async def send_token( token: str):
 """
 
 
-if __name__ == "__main__":
-    uvicorn.run("main:app",host="127.0.0.1",port=8000, reload=True)
+#if __name__ == "__main__":
+#    uvicorn.run("main:app",host="0.0.0.0",port=8000, reload=True)
 #ngrok config add-authtoken 2r8bFq6GpUfmyrs3PIu13bCYU8e_2oQHWK2hWMYP22TazUnax
 #ngrok http http://127.0.0.1:8000/
 #ngrok http http://0.0.0.0:8000/

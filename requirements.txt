@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+pydantic
+python-dotenv
+pycoingecko
+psycopg2-binary
+firebase-admin
