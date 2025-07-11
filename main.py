@@ -1,6 +1,6 @@
 import uvicorn
 import Sendpush as sp
-
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, BackgroundTasks
 from pydantic import BaseModel
 
@@ -8,7 +8,19 @@ from fastapi.concurrency import run_in_threadpool
 
 app = FastAPI()
 
+origins = [
+   "http://localhost:60360",  # Exemple d'origine autorisée (votre frontend)
+   "https://sql-app-tan.vercel.app",   # Exemple d'un autre domaine
+                      # Attention, '*' autorise toutes les origines, à n'utiliser qu'en développement
+   ]
 
+app.add_middleware(
+   CORSMiddleware,
+   allow_origins=origins,       # Liste des origines autorisées
+   allow_credentials=True,      # Autorise les cookies et en-têtes d'authentification
+   allow_methods=["*"],         # Autorise toutes les méthodes HTTP
+   allow_headers=["*"],         # Autorise tous les en-têtes
+   )
 
 class Item(BaseModel):
    token: str
@@ -38,7 +50,7 @@ async def send_token( token: str):
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:app",host="0.0.0.0",port=8000, reload=True)
+    uvicorn.run("main:app",host="127.0.0.1",port=8000, reload=True)
 #ngrok config add-authtoken 2r8bFq6GpUfmyrs3PIu13bCYU8e_2oQHWK2hWMYP22TazUnax
 #ngrok http http://127.0.0.1:8000/
 #ngrok http http://0.0.0.0:8000/
