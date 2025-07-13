@@ -9,7 +9,7 @@ from fastapi.concurrency import run_in_threadpool
 app = FastAPI()
 
 origins = [
-   "http://localhost:60360",  # Exemple d'origine autorisée (votre frontend)
+   "http://localhost:64218",  # Exemple d'origine autorisée (votre frontend)
    "https://sql-app-sigma.vercel.app",   # Exemple d'un autre domaine
                       # Attention, '*' autorise toutes les origines, à n'utiliser qu'en développement
    ]
