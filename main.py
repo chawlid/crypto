@@ -10,7 +10,7 @@ app = FastAPI()
 
 origins = [
    "http://localhost:60360",  # Exemple d'origine autorisée (votre frontend)
-   "https://sql-app-tan.vercel.app",   # Exemple d'un autre domaine
+   "https://sql-app-sigma.vercel.app",   # Exemple d'un autre domaine
                       # Attention, '*' autorise toutes les origines, à n'utiliser qu'en développement
    ]
 
